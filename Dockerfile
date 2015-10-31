@@ -34,7 +34,7 @@ COPY systemconfig.sh /tmp/systemconfig.sh
 RUN mkdir -p /opt/hubot
 RUN addgroup hubot && \
     adduser -h $HUBOT_HOME -D -s /bin/bash -G hubot hubot
-COPY hubot.conf /hubot/opt/hubot.Conf
+COPY hubot.conf /hubot/opt/config/hubot.Conf
 
 # Setup directories and permissions
 RUN bash -c /tmp/systemconfig.sh
@@ -67,6 +67,7 @@ RUN npm install
 
 # Expose volumes for long term data storage
 VOLUME /var/lib/redis
+VOLUME $HUBOT_HOME/config
 VOLUME $HUBOT_HOME/scripts
 
 USER root
