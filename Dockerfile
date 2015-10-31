@@ -30,7 +30,7 @@ RUN apk update && apk add \
 
 # Copy all files into place
 COPY supervisord.conf /etc/supervisor.d/supervisord.ini
-COPY hubot-init.sh $HUBOT_HOME/bin/hubot-init
+COPY hustart.sh $HUBOT_HOME/bin/hustart
 COPY systemconfig.sh /tmp/systemconfig.sh
 
 RUN mkdir -p /opt/hubot
@@ -40,8 +40,8 @@ RUN addgroup hubot && \
 # Setup directories and permissions
 RUN bash -c /tmp/systemconfig.sh
 
-# Symlink init command
-CMD ln -s $HUBOT_HOME/bin/hubot-init /usr/bin/hubot-init
+#Upgrade npm
+RUN npm install --global npm@v2.14.9
 
 # Install hubot
 WORKDIR $HUBOT_HOME
