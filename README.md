@@ -18,7 +18,6 @@ Hubot running on [Alpine](https://hub.docker.com/_/alpine/) with the [Hipchat Ad
 - [hubot-rules]()
 - [hubot-shipit](https://github.com/github/hubot-scripts/blob/master/src/scripts/shipit.coffee)
 - [hubot-pager-me](https://github.com/hubot-scripts/hubot-pager-me)
-- [hubot-chef](https://github.com/hubot-scripts/hubot-chef)
 - [hubot-plusplus](https://github.com/hubot-scripts/hubot-plusplus)
 - [hubot-tell](https://github.com/hubot-scripts/hubot-tell)
 - [hubot-devops-reactions](https://github.com/hubot-scripts/hubot-devops-reactions)
@@ -98,7 +97,7 @@ docker pull hearstat/alpine-hubot
 
 # Template files
 ## Hubot.Conf
-Lives at /opt/hubot/config and is sourced at run time. 
+Lives at /opt/hubot/config and is sourced at run time.
 
 Add all environment variables needed to conf file. See script repos for specific settings available.
 
