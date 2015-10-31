@@ -17,5 +17,6 @@
   "hubot-github-repo-event-notifier",
   "hubot-reload-scripts",
   "hubot-jenkins",
-  "hubot-jenkins-notifer"
+  "hubot-jenkins-notifer",
+  "hubot-leankit"
 ]

@@ -1,4 +1,4 @@
-FROM alpine:edge
+FROM mhart/alpine-node:0.12
 MAINTAINER Hearst Automation Team <atat@hearst.com>
 
 ENV HUBOT_HOME /opt/hubot
@@ -7,7 +7,6 @@ ENV HUBOT_HOME /opt/hubot
 RUN apk update && apk add \
     bash \
     supervisor \
-    nodejs \
     redis \
     build-base \
     gcc \
@@ -36,7 +35,6 @@ RUN mkdir -p /opt/hubot
 RUN addgroup hubot && \
     adduser -h $HUBOT_HOME -D -s /bin/bash -G hubot hubot
 COPY hubot.conf /hubot/opt/hubot.Conf
-COPY scripts.sh $HUBOT_HOME/scripts.sh
 
 # Setup directories and permissions
 RUN bash -c /tmp/systemconfig.sh
@@ -54,7 +52,17 @@ RUN yo hubot --owner="Bot Wrangler " --name="Hubot" --description="Delightfully 
 
 # Configure default scripts
 COPY external-scripts.json $HUBOT_HOME/external-scripts.json
-RUN $HUBOT_HOME/scripts.sh
+RUN npm install --save hubot-pager-me \
+hubot-chef \
+hubot-plusplus \
+hubot-tell \
+hubot-devops-reactions \
+hubot-team \
+hubot-github-repo-event-notifier \
+hubot-reload-scripts \
+hubot-jenkins \
+hubot-jenkins-notifier \
+hubot-leankit
 RUN npm install
 
 # Expose volumes for long term data storage

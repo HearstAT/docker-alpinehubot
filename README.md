@@ -3,30 +3,31 @@ Hubot running on [Alpine](https://hub.docker.com/_/alpine/) with the [Hipchat Ad
 
 # Build Info
 ## NODE
-- NodeJS: 4.2.1
+- NodeJS: 0.12.7
 - NPM: 2.24.9
 
 ## Default Scripts
 - [hubot-hipchat](https://github.com/hipchat/hubot-hipchat)
-- hubot-diagnostics
-- hubot-help
-- hubot-google-images
-- hubot-google-translate
-- hubot-pugme
-- hubot-maps
-- hubot-redis-brain
-- hubot-rules
-- hubot-shipit
-- hubot-pager-me
-- hubot-chef
-- hubot-plusplus
-- hubot-tell
-- hubot-devops-reactions
-- hubot-team
-- hubot-github-repo-event-notifier
-- hubot-reload-scripts
-- hubot-jenkins
-- hubot-jenkins-notifer
+- [hubot-diagnostics]()
+- [hubot-help]()
+- [hubot-google-images]()
+- [hubot-google-translate]()
+- [hubot-pugme]()
+- [hubot-maps]()
+- [hubot-redis-brain](https://github.com/github/hubot-scripts/blob/master/src/scripts/redis-brain.coffee)
+- [hubot-rules]()
+- [hubot-shipit](https://github.com/github/hubot-scripts/blob/master/src/scripts/shipit.coffee)
+- [hubot-pager-me](https://github.com/hubot-scripts/hubot-pager-me)
+- [hubot-chef](https://github.com/hubot-scripts/hubot-chef)
+- [hubot-plusplus](https://github.com/hubot-scripts/hubot-plusplus)
+- [hubot-tell](https://github.com/hubot-scripts/hubot-tell)
+- [hubot-devops-reactions](https://github.com/hubot-scripts/hubot-devops-reactions)
+- [hubot-team](https://github.com/hubot-scripts/hubot-team)
+- [hubot-github-repo-event-notifier](https://github.com/hubot-scripts/hubot-github-repo-event-notifier)
+- [hubot-reload-scripts](https://github.com/vinta/hubot-reload-scripts)
+- [hubot-jenkins](https://github.com/github/hubot-scripts/blob/master/src/scripts/jenkins.coffee)
+- [hubot-jenkins-notifer](https://github.com/halkeye/hubot-jenkins-notifier)
+- [hubot-leankit](https://github.com/battlemidget/hubot-leankit)
 
 ## Installed Packages
 - bash
