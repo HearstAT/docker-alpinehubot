@@ -1,0 +1,20 @@
+#!/usr/bin/expect
+
+spawn yo hubot --adapter hipchat
+expect "(Y/n)"
+sleep 1
+send "n\r"
+sleep 1
+expect ":"
+sleep 1
+send "\r"
+sleep 1
+expect "(hubot)"
+sleep 1
+send "\r"
+sleep 1
+expect "(A simple helpful robot for your Company)"
+sleep 1
+send "\r"
+sleep 1
+expect eof
