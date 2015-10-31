@@ -56,11 +56,11 @@ Hubot running on [Alpine](https://hub.docker.com/_/alpine/) with the [Hipchat Ad
 Mount the redis directory to avoid data reset on container replacement
 - /var/lib/redis
 
+Mount the config directory to manage credentials/settings outside of container
+- /opt/hubot/config
+
 Mount the scripts directory for script storage/easy addition
 - /opt/hubot/scripts
-
-Mount a customer configuration file, see below for more info
-- /opt/hubot/hubot.conf
 
 # Usage
 You have a few options in how to utilize this container
@@ -77,7 +77,7 @@ docker run -v -e HUBOT_HIPCHAT_JID=jid \
 ## Configuration File Start
 
 ```
-docker run -v /path/to/hubot.conf:/opt/hubot/hubot.conf -d hearstat/alpine-hubot
+docker run -v /path/to/hubot.conf:/opt/hubot/config/hubot.conf -d hearstat/alpine-hubot
 ```
 
 ## Full Feature Start
@@ -98,6 +98,8 @@ docker pull hearstat/alpine-hubot
 
 # Template files
 ## Hubot.Conf
+Lives at /opt/hubot/config and is sourced at run time. 
+
 Add all environment variables needed to conf file. See script repos for specific settings available.
 
 The baseline config file in container only has ADAPTER/HUBOT_NAME set.
