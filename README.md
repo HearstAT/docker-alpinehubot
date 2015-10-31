@@ -8,6 +8,25 @@ Hubot running on [Alpine](https://hub.docker.com/_/alpine/) with the [Hipchat Ad
 
 ## Default Scripts
 - [hubot-hipchat](https://github.com/hipchat/hubot-hipchat)
+- hubot-diagnostics
+- hubot-help
+- hubot-google-images
+- hubot-google-translate
+- hubot-pugme
+- hubot-maps
+- hubot-redis-brain
+- hubot-rules
+- hubot-shipit
+- hubot-pager-me
+- hubot-chef
+- hubot-plusplus
+- hubot-tell
+- hubot-devops-reactions
+- hubot-team
+- hubot-github-repo-event-notifier
+- hubot-reload-scripts
+- hubot-jenkins
+- hubot-jenkins-notifer
 
 ## Installed Packages
 - bash
@@ -15,7 +34,7 @@ Hubot running on [Alpine](https://hub.docker.com/_/alpine/) with the [Hipchat Ad
 - nodejs
 - redis
 - build-base
-- gcc
+- gc
 - g++
 - gcc-objc
 - libtool
@@ -32,10 +51,20 @@ Hubot running on [Alpine](https://hub.docker.com/_/alpine/) with the [Hipchat Ad
 - curl
 - wget
 
+## Suggested Mounts
+Mount the redis directory to avoid data reset on container replacement
+- /var/lib/redis
+
+Mount the scripts directory for script storage/easy addition
+- /opt/hubot/scripts
+
+Mount a customer configuration file, see below for more info
+- /opt/hubot/hubot.conf
+
 # Usage
 You have a few options in how to utilize this container
 
-####Basic Start
+## Basic Start
 
 ```
 docker run -v -e HUBOT_HIPCHAT_JID=jid \
@@ -44,13 +73,14 @@ docker run -v -e HUBOT_HIPCHAT_JID=jid \
   -d hearstat/alpine-hubot
 ```
 
-####Configuration File Start
+## Configuration File Start
 
 ```
 docker run -v /path/to/hubot.conf:/opt/hubot/hubot.conf -d hearstat/alpine-hubot
 ```
 
-####Full Feature Start<br>Coming Soon
+## Full Feature Start
+Coming Soon
 
 # Building
 To build the image, do the following
@@ -61,7 +91,9 @@ docker build github.com/hearstat/docker-alpinehubot
 
 A prebuilt container is available in the docker index.
 
-`` ` docker pull hearstat/alpine-hubot``
+```
+docker pull hearstat/alpine-hubot
+```
 
 # Template files
 ## Hubot.Conf

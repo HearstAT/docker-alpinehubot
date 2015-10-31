@@ -1,0 +1,21 @@
+[
+  "hubot-diagnostics",
+  "hubot-help",
+  "hubot-google-images",
+  "hubot-google-translate",
+  "hubot-pugme",
+  "hubot-maps",
+  "hubot-redis-brain",
+  "hubot-rules",
+  "hubot-shipit",
+  "hubot-pager-me",
+  "hubot-chef",
+  "hubot-plusplus",
+  "hubot-tell",
+  "hubot-devops-reactions",
+  "hubot-team",
+  "hubot-github-repo-event-notifier",
+  "hubot-reload-scripts",
+  "hubot-jenkins",
+  "hubot-jenkins-notifer"
+]

@@ -35,7 +35,8 @@ COPY systemconfig.sh /tmp/systemconfig.sh
 RUN mkdir -p /opt/hubot
 RUN addgroup hubot && \
     adduser -h $HUBOT_HOME -D -s /bin/bash -G hubot hubot
-COPY hubot.conf /hubot/opt/hubot.conf
+COPY hubot.conf /hubot/opt/hubot.Conf
+COPY scripts.sh $HUBOT_HOME/scripts.sh
 
 # Setup directories and permissions
 RUN bash -c /tmp/systemconfig.sh
@@ -50,6 +51,10 @@ RUN npm install --global coffee-script yo generator-hubot
 USER hubot
 # Install hipchat adapter by default
 RUN yo hubot --owner="Bot Wrangler " --name="Hubot" --description="Delightfully aware robutt" --adapter=hipchat --defaults
+
+# Configure default scripts
+COPY external-scripts.json $HUBOT_HOME/external-scripts.json
+RUN $HUBOT_HOME/scripts.sh
 RUN npm install
 
 # Expose volumes for long term data storage
