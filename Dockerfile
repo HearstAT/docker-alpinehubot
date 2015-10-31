@@ -53,7 +53,6 @@ RUN yo hubot --owner="Bot Wrangler " --name="Hubot" --description="Delightfully 
 # Configure default scripts
 COPY external-scripts.json $HUBOT_HOME/external-scripts.json
 RUN npm install --save hubot-pager-me \
-hubot-chef \
 hubot-plusplus \
 hubot-tell \
 hubot-devops-reactions \
