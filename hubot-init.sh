@@ -21,7 +21,6 @@ NAME="Hubot"
 USER='hubot'
 GROUP='hubot'
 SCRIPTNAME='hubot-init'
-DAEMON_OPTS='--adapter hipchat --name thebot'
 HUBOT_HOME="/opt/hubot"
 LOGFILE="/var/log/hubot/hubot.log"
 PIDFILE="/var/run/hubot.pid"
@@ -36,7 +35,7 @@ set -e
 case "$1" in
   start)
         echo -n "Starting $NAME: "
-        start-stop-daemon --start --quiet --pidfile $PIDFILE -c $USER:$GROUP --make-pidfile --background --exec $DAEMON $DAEMON_OPTS
+        start-stop-daemon --start --quiet --pidfile $PIDFILE --user $USER --make-pidfile --background --exec $DAEMON
         echo "."
         ;;
   stop)
@@ -48,7 +47,7 @@ case "$1" in
    restart)
         echo -n "Restarting $NAME: "
         start-stop-daemon --stop --quiet --pidfile $PIDFILE
-        start-stop-daemon --start --quiet --pidfile $PIDFILE -c $USER:$GROUP --make-pidfile --background --exec $DAEMONA $DAEMON_OPTS
+        start-stop-daemon --start --quiet --pidfile $PIDFILE --user $USER --make-pidfile --background --exec $DAEMON
         echo "."
         ;;
 
