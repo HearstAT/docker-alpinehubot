@@ -3,7 +3,7 @@ Hubot running on [Alpine](https://hub.docker.com/_/alpine/) with the [Hipchat Ad
 
 # Build Info
 ## NODE
-- NodeJS: 0.12.7
+- NodeJS: 4.12
 - NPM: 2.24.9
 
 ## Default Scripts
@@ -20,7 +20,6 @@ Hubot running on [Alpine](https://hub.docker.com/_/alpine/) with the [Hipchat Ad
 - [hubot-pager-me](https://github.com/hubot-scripts/hubot-pager-me)
 - [hubot-plusplus](https://github.com/hubot-scripts/hubot-plusplus)
 - [hubot-tell](https://github.com/hubot-scripts/hubot-tell)
-- [hubot-devops-reactions](https://github.com/hubot-scripts/hubot-devops-reactions)
 - [hubot-team](https://github.com/hubot-scripts/hubot-team)
 - [hubot-github-repo-event-notifier](https://github.com/hubot-scripts/hubot-github-repo-event-notifier)
 - [hubot-reload-scripts](https://github.com/vinta/hubot-reload-scripts)

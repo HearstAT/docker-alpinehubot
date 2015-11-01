@@ -1,4 +1,4 @@
-FROM mhart/alpine-node:0.12
+FROM mhart/alpine-node:4.2.1
 MAINTAINER Hearst Automation Team <atat@hearst.com>
 
 ENV HUBOT_HOME /opt/hubot
@@ -30,6 +30,7 @@ RUN apk update && apk add \
 # Copy all files into place
 COPY supervisord.conf /etc/supervisor.d/supervisord.ini
 COPY systemconfig.sh /tmp/systemconfig.sh
+COPY redis.conf $HUBOT_HOME/redis/redis.conf
 
 RUN mkdir -p /opt/hubot
 RUN addgroup hubot && \
@@ -55,7 +56,6 @@ COPY external-scripts.json $HUBOT_HOME/external-scripts.json
 RUN npm install --save hubot-pager-me \
 hubot-plusplus \
 hubot-tell \
-hubot-devops-reactions \
 hubot-team \
 hubot-github-repo-event-notifier \
 hubot-reload-scripts \
