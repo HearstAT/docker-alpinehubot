@@ -97,7 +97,7 @@ docker exec $container_name python script-install.py
 Then in chat tell hubot to reload (my default is thebot)
 
 ```
-@thebot reload
+@hubot reload
 ```
 
 # Building
@@ -124,7 +124,7 @@ The baseline config file in container only has ADAPTER/HUBOT_NAME set.
 ```
 ## Bot Settings
 export ADAPTER='hipchat'
-export HUBOT_NAME='thebot' # what hubot listens to
+export HUBOT_NAME='hubot' # what hubot listens to
 
 ## Comma separated list of users who administer Hubot Auth
 export HUBOT_AUTH_ADMIN="YourName"
