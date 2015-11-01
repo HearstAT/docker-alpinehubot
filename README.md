@@ -87,17 +87,17 @@ docker run -v /path/to/hubot.conf:/opt/hubot/config/hubot.conf \
 -d hearstat/alpine-hubot
 ```
 
-# Run Time help
+# Run Time Help
 Since this container comes with a bot reload option, edit the external-scripts.json as needed and run the following
 
 ```
 docker exec $container_name python script-install.py
 ```
 
-Then in chat tell hubot to reload
+Then in chat tell hubot to reload (my default is thebot)
 
 ```
-@hubot reload
+@thebot reload
 ```
 
 # Building
@@ -124,7 +124,7 @@ The baseline config file in container only has ADAPTER/HUBOT_NAME set.
 ```
 ## Bot Settings
 export ADAPTER='hipchat'
-export HUBOT_NAME='hubot' # what hubot listens to
+export HUBOT_NAME='thebot' # what hubot listens to
 
 ## Comma separated list of users who administer Hubot Auth
 export HUBOT_AUTH_ADMIN="YourName"
@@ -152,7 +152,7 @@ export HUBOT_HIPCHAT_JOIN_PUBLIC_ROOMS="false"
 ```
 
 ## external-scripts.json
-The embedded script-install.py utilizes the external-scripts.json for it's install items, I did this to simplify the process. You already have to add everything to the file regardless, to use it to install from.
+The embedded script-install.py utilizes the external-scripts.json for it's install items, I did this to simplify the process. You already have to add everything to the file regardless, so use it to install from.
 
 ```
 [
