@@ -53,15 +53,8 @@ RUN yo hubot --owner="Bot Wrangler " --name="Hubot" --description="Delightfully 
 
 # Configure default scripts
 COPY external-scripts.json $HUBOT_HOME/external-scripts.json
-RUN npm install --save hubot-pager-me \
-hubot-plusplus \
-hubot-tell \
-hubot-team \
-hubot-github-repo-event-notifier \
-hubot-reload-scripts \
-hubot-jenkins \
-hubot-jenkins-notifier \
-hubot-leankit
+COPY script-install.py $HUBOT_HOME/script-install.py
+RUN python script-install.py
 RUN npm install
 
 # Expose volumes for long term data storage
