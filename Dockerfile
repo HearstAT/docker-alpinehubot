@@ -35,7 +35,7 @@ COPY redis.conf $HUBOT_HOME/redis/redis.conf
 RUN mkdir -p /opt/hubot
 RUN addgroup hubot && \
     adduser -h $HUBOT_HOME -D -s /bin/bash -G hubot hubot
-COPY hubot.conf /hubot/opt/config/hubot.Conf
+COPY hubot.conf /opt/hubot/config/hubot.conf
 
 # Setup directories and permissions
 RUN bash -c /tmp/systemconfig.sh
