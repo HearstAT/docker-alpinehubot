@@ -27,15 +27,22 @@ RUN apk update && apk add \
     wget \
     && rm -rf /var/cache/apk/*
 
-# Copy all files into place
-COPY supervisord.conf /etc/supervisor.d/supervisord.ini
+# Copy system files into place
 COPY systemconfig.sh /tmp/systemconfig.sh
 COPY redis.conf $HUBOT_HOME/redis/redis.conf
 
 RUN mkdir -p /opt/hubot
 RUN addgroup hubot && \
     adduser -h $HUBOT_HOME -D -s /bin/bash -G hubot hubot
-COPY hubot.conf /opt/hubot/config/hubot.conf
+COPY hubot.conf $HUBOT_HOME/config/hubot.conf
+
+# Copy prod mode items into place
+COPY supervisord.conf $HUBOT_HOME/prod/supervisord.ini
+COPY prodmode.sh $HUBOT_HOME/prod/prodmode.sh
+
+# Copy dev mode items into place
+COPY supervisord.dev.conf $HUBOT_HOME/dev/supervisord.ini
+COPY devmode.sh $HUBOT_HOME/dev/devmode.sh
 
 # Setup directories and permissions
 RUN bash -c /tmp/systemconfig.sh
@@ -43,7 +50,7 @@ RUN bash -c /tmp/systemconfig.sh
 # Upgrade npm
 RUN npm install --global npm@v2.14.9
 
-# Install hubot
+# Install hubot via yo
 WORKDIR $HUBOT_HOME
 RUN npm install --global coffee-script yo generator-hubot
 
@@ -51,16 +58,18 @@ USER hubot
 # Install hipchat adapter by default
 RUN yo hubot --owner="Bot Wrangler " --name="Hubot" --description="Delightfully aware robutt" --adapter=hipchat --defaults
 
-# Configure default scripts
+# Utilize external-scripts.json to control which scripts are installed. As it's already the gatekeeper might as well install from it.
 COPY external-scripts.json $HUBOT_HOME/external-scripts.json
+# Script to parse external-scripts.json to perform the npm install $script --save
 COPY script-install.py $HUBOT_HOME/script-install.py
 RUN python script-install.py
+
+# Install any dependencies missed by the hubot generate
 RUN npm install
 
 # Expose volumes for long term data storage
 VOLUME /var/lib/redis
 VOLUME $HUBOT_HOME/config
-VOLUME $HUBOT_HOME/scripts
 
 USER root
-CMD supervisord -n
+CMD /usr/bin/prodmode

@@ -11,7 +11,6 @@ Hubot running on [Alpine](https://hub.docker.com/_/alpine/) with the [Hipchat Ad
 - [hubot-diagnostics]()
 - [hubot-help]()
 - [hubot-google-images]()
-- [hubot-google-translate]()
 - [hubot-pugme]()
 - [hubot-maps]()
 - [hubot-redis-brain](https://github.com/github/hubot-scripts/blob/master/src/scripts/redis-brain.coffee)
@@ -19,12 +18,7 @@ Hubot running on [Alpine](https://hub.docker.com/_/alpine/) with the [Hipchat Ad
 - [hubot-shipit](https://github.com/github/hubot-scripts/blob/master/src/scripts/shipit.coffee)
 - [hubot-pager-me](https://github.com/hubot-scripts/hubot-pager-me)
 - [hubot-plusplus](https://github.com/hubot-scripts/hubot-plusplus)
-- [hubot-tell](https://github.com/hubot-scripts/hubot-tell)
-- [hubot-team](https://github.com/hubot-scripts/hubot-team)
-- [hubot-github-repo-event-notifier](https://github.com/hubot-scripts/hubot-github-repo-event-notifier)
 - [hubot-reload-scripts](https://github.com/vinta/hubot-reload-scripts)
-- [hubot-jenkins](https://github.com/github/hubot-scripts/blob/master/src/scripts/jenkins.coffee)
-- [hubot-jenkins-notifer](https://github.com/halkeye/hubot-jenkins-notifier)
 - [hubot-leankit](https://github.com/battlemidget/hubot-leankit)
 
 ## Installed Packages
@@ -86,6 +80,27 @@ docker run -v /path/to/hubot.conf:/opt/hubot/config/hubot.conf \
 -v /path/to/external-scripts.json:/opt/hubot/external-scripts.json \
 -d hearstat/alpine-hubot
 ```
+## Dev Mode Start
+I've setup this bot to be able to switch back and forth from Hipchat to Shell via startup commands. This is how to get into "Dev Mode" or enable the shell adapter.
+```
+docker run -d hearstat/alpine-hubot /usr/bin/devmode
+```
+then just do the following to connect to the container at the shell level
+```
+docker exec -it $container_name bash
+```
+then once in run the following
+```
+./bin/hubot
+```
+Then you can interact with hubot at the shell level
+
+## Prod Mode Start
+To switch back to hipchat or "Prod Mode" do the following
+```
+docker exec $container_name /usr/bin/prodmode
+```
+or just run a new container
 
 # Run Time Help
 Since this container comes with a bot reload option, edit the external-scripts.json as needed and run the following
@@ -159,7 +174,6 @@ The embedded script-install.py utilizes the external-scripts.json for it's insta
   "hubot-diagnostics",
   "hubot-help",
   "hubot-google-images",
-  "hubot-google-translate",
   "hubot-pugme",
   "hubot-maps",
   "hubot-redis-brain",
@@ -167,12 +181,7 @@ The embedded script-install.py utilizes the external-scripts.json for it's insta
   "hubot-shipit",
   "hubot-pager-me",
   "hubot-plusplus",
-  "hubot-tell",
-  "hubot-team",
-  "hubot-github-repo-event-notifier",
   "hubot-reload-scripts",
-  "hubot-jenkins",
-  "hubot-jenkins-notifier",
   "hubot-leankit"
 ]
 ```
