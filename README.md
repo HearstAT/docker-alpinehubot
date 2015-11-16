@@ -51,6 +51,9 @@ Mount the redis directory to avoid data reset on container replacement
 Mount the config directory to manage credentials/settings outside of container
 - /opt/hubot/config
 
+Mount the scripts directory to manage any non-npm installs/simple scripts
+- /opt/hubot/scripts
+
 Mount the external-scripts for control
 - /opt/hubot/external-scripts.json
 
@@ -108,6 +111,7 @@ Since this container comes with a bot reload option, edit the external-scripts.j
 ```
 docker exec $container_name python script-install.py
 ```
+Note: you can just restart the container, it will re-run the same script before loading the bot.
 
 Then in chat tell hubot to reload (my default is thebot)
 
@@ -138,7 +142,6 @@ The baseline config file in container only has ADAPTER/HUBOT_NAME set.
 
 ```
 ## Bot Settings
-export ADAPTER='hipchat'
 export HUBOT_NAME='hubot' # what hubot listens to
 
 ## Comma separated list of users who administer Hubot Auth

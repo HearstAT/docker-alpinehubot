@@ -69,6 +69,7 @@ RUN npm install
 
 # Expose volumes for long term data storage
 VOLUME /var/lib/redis
+VOLUME $HUBOT_HOME/scripts
 VOLUME $HUBOT_HOME/config
 
 USER root
