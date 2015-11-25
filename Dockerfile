@@ -1,4 +1,4 @@
-FROM mhart/alpine-node:4.2.1
+FROM hearstat/alpine-node
 MAINTAINER Hearst Automation Team <atat@hearst.com>
 
 ENV HUBOT_HOME /opt/hubot
@@ -46,9 +46,6 @@ COPY devmode.sh $HUBOT_HOME/dev/devmode.sh
 
 # Setup directories and permissions
 RUN bash -c /tmp/systemconfig.sh
-
-# Upgrade npm
-RUN npm install --global npm@v2.14.9
 
 # Install hubot via yo
 WORKDIR $HUBOT_HOME
