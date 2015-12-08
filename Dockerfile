@@ -43,6 +43,7 @@ COPY prodmode.sh $HUBOT_HOME/prod/prodmode.sh
 # Copy dev mode items into place
 COPY supervisord.dev.conf $HUBOT_HOME/dev/supervisord.ini
 COPY devmode.sh $HUBOT_HOME/dev/devmode.sh
+COPY script-install-dev.py $HUBOT_HOME/script-install-dev.py
 
 # Setup directories and permissions
 RUN bash -c /tmp/systemconfig.sh
