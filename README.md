@@ -98,6 +98,34 @@ then once in run the following
 ```
 Then you can interact with hubot at the shell level
 
+## Node-Inspector
+
+Run:
+
+    docker run -d -p 8123:8123 -p 5858:5858 --name=devbot hearstat/alpine-hubot devmode
+    docker exec -it devbot bash
+    export PATH="node_modules/.bin:node_modules/hubot/node_modules/.bin:$PATH"
+    coffee --nodejs --debug $(which hubot)
+
+In Chrome navigatate to http://<docker IP>:8123/?ws=<docker IP>:8123&port=5858
+For Mac users "docker IP" can be found in Kitematic.
+Example: http://192.168.99.100:8123/?ws=192.168.99.100:8123&port=5858
+
+NOTE: You should end up in a hubot REPL, if you end up in a coffee REPL you did something wrong.  To exit:
+
+    coffee> process.exit()
+
+NOTE: node-inspector currently only works in Chrome.
+
+To set a breakpoint in coffeescript you will want to open the code in the /opt/hubot/node_modules/ directory and add at the appropriate line:
+
+    debugger
+
+You may want to mount a directory locally so you can use your local editor.  To do this consider:
+
+    mkdir -p /tmp/node_modules
+    docker run -d -p 8123:8123 -p 5858:5858 -v /tmp/node_modules:/opt/hubot/node_modules --name=devbot hearstat/alpine-hubot devmode
+
 ## Prod Mode Start
 To switch back to hipchat or "Prod Mode" do the following
 ```

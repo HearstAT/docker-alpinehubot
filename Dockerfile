@@ -49,7 +49,7 @@ RUN bash -c /tmp/systemconfig.sh
 
 # Install hubot via yo
 WORKDIR $HUBOT_HOME
-RUN npm install --global coffee-script yo generator-hubot
+RUN npm install --global coffee-script yo generator-hubot node-inspector
 
 USER hubot
 # Install hipchat adapter by default
@@ -68,6 +68,10 @@ RUN npm install
 VOLUME /var/lib/redis
 VOLUME $HUBOT_HOME/scripts
 VOLUME $HUBOT_HOME/config
+
+# Exposing node-inspector
+EXPOSE 8123
+EXPOSE 5858
 
 USER root
 CMD /usr/bin/prodmode
